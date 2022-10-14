@@ -19,16 +19,16 @@ public class HomeController {
 
     @GetMapping("/check")
     public String getStatusMessage(@AuthenticationPrincipal Saml2AuthenticatedPrincipal principal, Model model) {
-        return "check";
+        return "You can display this page of spring-boot-saml-sp2";
     }
 
     @GetMapping("/check2")
     public String getStatusMessage2(@AuthenticationPrincipal Saml2AuthenticatedPrincipal principal, Model model) {
-        return "check";
+        return "You can display this page of spring-boot-saml-sp2";
     }
 
     @GetMapping("/check3")
     public String getStatusMessage3(@AuthenticationPrincipal Saml2AuthenticatedPrincipal principal, Model model) {
-        return "check";
+        return "You can display this page of spring-boot-saml-sp2";
     }    
 }
