@@ -7,6 +7,7 @@
     </head>
     <body>
         <h1>Welcome to spring-boot-saml-sp5</h1>
+        <p><span th:text="${message}"></span></p>
         <p>You are successfully signed in as <span sec:authentication="name"></span></p>
         <p>Your email address is <span th:text="${emailAddress}"></span>.</p>
         <p>Your authorities are <span sec:authentication="authorities"></span>.</p>
@@ -19,16 +20,5 @@
         <form th:action="@{/logout}" method="post">
             <button id="signout" type="submit">Sign out</button>
         </form>
-
-        <h1>Links with pages in the app</h1>
-        <p><a href="/check">/check: requires User Administrator role</a></p>
-        <p><a href="/check2">/check2: requires authentication only</a></p>
-        <p><a href="/check3">/check3: requires authentication only</a></p>
-        <p><a href="/check4/123456">/check4/123456: requires authentication only</a></p>
-        <p><a href="/check5?accountnumber=123456">/check5?accountnumber=123456: requires authentication only</a></p>
-        <p><a href="/admin">/admin: requires User Administrator role</a></p>
-        <p><a href="/apppmt">/apppmt: requires CADWAdmApprovePmt role</a></p>
-        <p><a href="/viewpmt">/viewpmt: requires CADWAdmConsultPmt role</a></p>
-        <p><a href="/fx">/fx: requires Foreign Exchange Transactions role</a></p>
     </body>
 </html>
