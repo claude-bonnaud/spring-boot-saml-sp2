@@ -26,7 +26,7 @@ public class HomeController {
         model.addAttribute("name", principal.getName());
         model.addAttribute("emailAddress", principal.getFirstAttribute("email"));
         model.addAttribute("userAttributes", principal.getAttributes());
-        model.addAttribute("message", "check: You can display this page of spring-boot-saml-sp5 if you belong to the group User Administrator");
+        model.addAttribute("message", "check: You can display this page if you belong to the group User Administrator");
         return "message";
     }
 
@@ -35,7 +35,7 @@ public class HomeController {
         model.addAttribute("name", principal.getName());
         model.addAttribute("emailAddress", principal.getFirstAttribute("email"));
         model.addAttribute("userAttributes", principal.getAttributes());
-        model.addAttribute("message", "check2: You can display this page of spring-boot-saml-sp5");
+        model.addAttribute("message", "check2: You can display this page");
         return "message";
     }
 
@@ -44,7 +44,7 @@ public class HomeController {
         model.addAttribute("name", principal.getName());
         model.addAttribute("emailAddress", principal.getFirstAttribute("email"));
         model.addAttribute("userAttributes", principal.getAttributes());
-        model.addAttribute("message", "check3: You can display this page of spring-boot-saml-sp5");
+        model.addAttribute("message", "check3: You can display this page");
         return "message";
     } 
 
@@ -56,7 +56,7 @@ public class HomeController {
         model.addAttribute("name", principal.getName());
         model.addAttribute("emailAddress", principal.getFirstAttribute("email"));
         model.addAttribute("userAttributes", principal.getAttributes());
-        model.addAttribute("message", "/check4/{accountnumber}: You can display this page of spring-boot-saml-sp5");
+        model.addAttribute("message", "/check4/{accountnumber}: You can display this page");
         model.addAttribute("accountnumber", accountnumber);
         return "account";
     } 
@@ -69,7 +69,7 @@ public class HomeController {
         model.addAttribute("name", principal.getName());
         model.addAttribute("emailAddress", principal.getFirstAttribute("email"));
         model.addAttribute("userAttributes", principal.getAttributes());
-        model.addAttribute("message", "/check5?accountnumber={accountnumber}: You can display this page of spring-boot-saml-sp5");
+        model.addAttribute("message", "/check5?accountnumber={accountnumber}: You can display this page");
         model.addAttribute("accountnumber", accountnumber);
         return "account";
     }     
@@ -80,7 +80,7 @@ public class HomeController {
         model.addAttribute("name", principal.getName());
         model.addAttribute("emailAddress", principal.getFirstAttribute("email"));
         model.addAttribute("userAttributes", principal.getAttributes());
-        model.addAttribute("message", "admin: You can display this page of spring-boot-saml-sp5 because you belong to the group User Administrator");
+        model.addAttribute("message", "admin: You can display this page because you belong to the group User Administrator");
         return "message";
     } 
 
@@ -90,7 +90,7 @@ public class HomeController {
         model.addAttribute("name", principal.getName());
         model.addAttribute("emailAddress", principal.getFirstAttribute("email"));
         model.addAttribute("userAttributes", principal.getAttributes());
-        model.addAttribute("message", "apppmt: You can display this page of spring-boot-saml-sp5 because you belong to the group CADWAdmApprovePmt");
+        model.addAttribute("message", "apppmt: You can display this page because you belong to the group CADWAdmApprovePmt");
         return "message";
     }
 
@@ -100,7 +100,7 @@ public class HomeController {
         model.addAttribute("name", principal.getName());
         model.addAttribute("emailAddress", principal.getFirstAttribute("email"));
         model.addAttribute("userAttributes", principal.getAttributes());
-        model.addAttribute("message", "viewpmt: You can display this page of spring-boot-saml-sp5 because you belong to the group CADWAdmConsultPmt");
+        model.addAttribute("message", "viewpmt: You can display this page because you belong to the group CADWAdmConsultPmt");
         return "message";
     }
 
@@ -110,7 +110,7 @@ public class HomeController {
         model.addAttribute("name", principal.getName());
         model.addAttribute("emailAddress", principal.getFirstAttribute("email"));
         model.addAttribute("userAttributes", principal.getAttributes());
-        model.addAttribute("message", "fx: You can display this page of spring-boot-saml-sp5 because you belong to the group Foreign Exchange Transactions");
+        model.addAttribute("message", "fx: You can display this page because you belong to the group Foreign Exchange Transactions");
         return "message";
     }
 }
