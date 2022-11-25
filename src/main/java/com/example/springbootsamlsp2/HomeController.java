@@ -17,6 +17,7 @@ import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
@@ -146,7 +147,7 @@ public class HomeController {
         String requestBody = objectMapper
                 .writeValueAsString(values);
 
-        HttpClient client = HttpClient.newHttpClient();
+        
 
         String params = URLEncoder.encode("operSignMenuOptionProcessor|operSignMenuOptionProcessor", StandardCharsets.UTF_8.toString());
 
@@ -155,8 +156,13 @@ public class HomeController {
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
                 .build();
 
-        HttpResponse<String> response = client.send(request,
-                HttpResponse.BodyHandlers.ofString());
+        //HttpClient client = HttpClient.newHttpClient();
+        //HttpResponse<String> response = client.send(request,BodyHandlers.ofString());
+        
+        HttpResponse<String> response = HttpClient.newBuilder()
+        .followRedirects(HttpClient.Redirect.ALWAYS)
+        .build()
+        .send(request, BodyHandlers.ofString());
 
         return response.body();
     }     
