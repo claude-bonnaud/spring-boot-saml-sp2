@@ -8,6 +8,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 @Controller
 public class HomeController {
@@ -113,5 +124,41 @@ public class HomeController {
         model.addAttribute("message", "fx: You can display this page because you belong to the group Foreign Exchange Transactions");
         return "message";
     }
+
+    @RequestMapping("/conciliationcheque")
+    @ResponseBody
+    public String conciliationcheque(@AuthenticationPrincipal Saml2AuthenticatedPrincipal principal, Model model) throws IOException, InterruptedException {
+
+        var values = new HashMap<String, String>() {{
+            put("com.bnc.sbi.pres.event.http.HttpEventSequencerFilter.spa", "{1}pWHYqM20td+qI8PVhtL5bQ==");
+            put ("iedEventProcessor", "operSignMenuOptionProcessor");
+            put ("iedEvent", "create");
+            put ("linkSelected", "operSignMenuOptionProcessor");
+            put ("controllerAlias", "");
+            put ("context", "");
+            put ("optionSelected", "mi_operSignMenuOptionProcessor");
+            put ("supporting", "");
+            put ("eventDefId", "k73");
+            put ("initialOptionSelected", "mi_accountSummary");          
+        }};
+
+        var objectMapper = new ObjectMapper();
+        String requestBody = objectMapper
+                .writeValueAsString(values);
+
+        HttpClient client = HttpClient.newHttpClient();
+
+        String params = URLEncoder.encode("operSignMenuOptionProcessor|operSignMenuOptionProcessor", StandardCharsets.UTF_8.toString());
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://commercial-ti-b.bnc.ca/SBIComWeb/EventDispatch/" + params))
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
+    }     
 }
 
