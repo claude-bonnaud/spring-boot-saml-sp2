@@ -127,7 +127,6 @@ public class HomeController {
     }
 
     @RequestMapping("/conciliationcheque")
-    @ResponseBody
     public String conciliationcheque(@AuthenticationPrincipal Saml2AuthenticatedPrincipal principal, Model model) throws IOException, InterruptedException {
 
         var values = new HashMap<String, String>() {{
@@ -164,7 +163,7 @@ public class HomeController {
         .build()
         .send(request, BodyHandlers.ofString());
 
-        return response.body();
+        return response.toString();
     }     
 }
 
